@@ -1,0 +1,131 @@
+
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 100%;
+}
+
+.logo {
+    height: 40px;
+}
+
+nav {
+    flex: 1;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    position: relative;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    display: block;
+}
+
+nav ul li:hover>.dropdown {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.dropdown {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    background-color: rgba(19, 25, 26, 0.216);
+    box-shadow: 0 8px 16px rgba(205, 199, 199, 0.2);
+    z-index: 1500;
+    min-width: 100px;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s 0.5s;
+}
+
+.dropdown a {
+    display: block;
+    padding: 10px 20px;
+    color: rgb(207, 211, 211);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.dropdown a:hover {
+    background-color:rgba(8, 15, 84, 0.217);
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.login-button {
+    padding: 5px 10px;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    color: rgb(249, 63, 76);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hamburger-menu div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+}
+
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .header-buttons input {
+        display: none;
+    }
+
+    .header-buttons {
+        justify-content: flex-end;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: black;
+        position: absolute;
+        top: 60px;
+        left: 0;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+        text-align: center;
+    }
+}
