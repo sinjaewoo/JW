@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시물 수정</title>
+    <link rel="stylesheet" href="css/edit_styles.css">
+    <link rel="stylesheet" href="css/header_styles.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('image/5033917.jpg');
+        }
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: black;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: 60px;
+            background-image: url('image/9.png');
+        }
+
+     
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            background-color: #f4f4f463;
+            width: 80%;
+            height: 80%;
+            margin: 80px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .board-section,
+        .edit-post-section {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.412);
+        }
+
+        .board-left {
+            flex: 1;
+            background-color: rgba(195, 208, 23, 0.578);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .board-left h1 {
+            font-size: 36px;
+        }
+
+        .edit-post-area {
+            flex: 2;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .edit-post-area h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: black;
+            text-align: center;
+        }
+
+        .post-form {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .form-field {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-field label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .form-field input[type="text"],
+        .form-field textarea,
+        .form-field input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc77;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .form-field input[type="file"] {
+            border: none;
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .form-buttons button {
+            padding: 10px 20px;
+            border: none;
+            background-color: rgba(195, 208, 23, 0.578);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            width: 48%;
+        }
+
+        .form-buttons button:hover {
+            background-color: rgba(221, 235, 16, 0.78);
+        }
+
+        .wc_message {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <img src="image/GamebitLogo.png" alt="Gamebit Logo" class="logo">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.html">홈</a>
+                    </li>
+                    <li>
+                        <a href="notice.html">공지사항</a>
+                    </li>
+                    <li>
+                        <a href="#">내 정보</a>
+                        <div class="dropdown">
+                            <a href="#">내 정보 보기</a>
+                            <a href="#">내 정보 수정</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">관리자 페이지</a>
+                        <div class="dropdown">
+                            <a href="#">대시보드</a>
+                            <a href="#">통계</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <button class="login-button" onclick="location.href='join.html'">Login</button>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <section class="edit-post-section">
+            <article class="board-left">
+                <h1>게시물 수정</h1>
+                <div class="wc_message"></div>
+            </article>
+            <article class="edit-post-area">
+                <h2></h2>
+                <form class="post-form">
+                    <div class="form-field">
+                        <label for="post-title">글 제목</label>
+                        <input type="text" id="post-title" name="post-title" value="파일 다운 성공" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="post-content">내용</label>
+                        <textarea id="post-content" name="post-content" rows="10" required>크크</textarea>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn-cancel" onclick="location.href='board.html'">목록</button>
+                        <button type="submit" class="btn-submit">수정</button>
+                    </div>
+                </form>
+            </article>
+        </section>
+    </main>
+</body>
+
+</html>

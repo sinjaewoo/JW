@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>명예의 전당</title>
+    <link rel="stylesheet" href="css/header_styles.css">
+    
+</head>
+<style>
+
+body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            background-image: url('image/5033917.jpg');
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+            width: 1000px;
+            height: auto;
+            padding: 20px;
+            background-color: rgba(23, 225, 120, 0.495);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .tabs {
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #333;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 0 5px;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .tab-button:hover {
+            background-color: #555;
+        }
+
+        .tab-content {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .tab-content ol {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .tab-content ol li {
+            background-color: #444;
+            margin: 5px 0;
+            padding: 10px;
+            color: white;
+            border-radius: 5px;
+        }
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: black;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: 60px;
+            background-image: url('image/9.png');
+        }
+
+   
+
+
+</style>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="image/GamebitLogo.png" alt="Nintendo Logo" class="logo">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.html">홈</a>
+                        <div class="dropdown"></div>
+                    </li>
+                    <li>
+                        <a href="#">게임</a>
+                        <div class="dropdown">
+                            <a href="win.html">명예의 전당</a>
+                            <a href="#">Subitem 2</a>
+                            <a href="#">랭킹</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="board.html">게시판</a>
+                        <div class="dropdown">
+                            <a href="board.html">게시판</a>
+                            <a href="#">Q&A</a>
+                            <a href="#">공지사항</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">마이페이지</a>
+                        <div class="dropdown">
+                            <a href="#">내 정보 수정</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">관리자 페이지</a>
+                        <div class="dropdown">
+                            <a href="#">대시보드</a>
+                            <a href="#">통계</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <button class="login-button" onclick="location.href='join.html'">Login</button>
+                <div class="hamburger-menu" onclick="toggleMenu()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <h1>명예의 전당</h1>
+        <div class="tabs">
+            <button class="tab-button" onclick="showGame('game1')">game1</button>
+            <button class="tab-button" onclick="showGame('game2')">game2</button>
+            <button class="tab-button" onclick="showGame('game3')">game3</button>
+            <button class="tab-button" onclick="showGame('game4')">game4</button>
+            <button class="tab-button" onclick="showGame('game5')">game5</button>
+        </div>
+        <div id="game1" class="tab-content">
+            <h2>🎮 game1</h2>
+            <ol>
+                <li>tester 1</li>
+                <li>tester 2</li>
+                <li>tester 3</li>
+                <li>tester 4</li>
+                <li>tester 5</li>
+            </ol>
+        </div>
+        <div id="game2" class="tab-content">
+            <h2> 🏆 game2</h2>
+            <ol>
+                <li>Player1</li>
+                <li>Player2</li>
+                <li>Player3</li>
+                <li>Player4</li>
+                <li>Player5</li>
+            </ol>
+        </div>
+        <div id="game3" class="tab-content">
+            <h2> ⭐ game3</h2>
+            <ol>
+                <li>PlayerA</li>
+                <li>PlayerB</li>
+                <li>PlayerC</li>
+                <li>PlayerD</li>
+                <li>PlayerE</li>
+            </ol>
+        </div>
+        <div id="game4" class="tab-content">
+            <h2> 🔥 game4</h2>
+            <ol>
+                <li>Gamer1</li>
+                <li>Gamer2</li>
+                <li>Gamer3</li>
+                <li>Gamer4</li>
+                <li>Gamer5</li>
+            </ol>
+        </div>
+        <div id="game5" class="tab-content">
+            <h2> 🎯 game5</h2>
+            <ol>
+                <li>Winner1</li>
+                <li>Winner2</li>
+                <li>Winner3</li>
+                <li>Winner4</li>
+                <li>Winner5</li>
+            </ol>
+        </div>
+    </div>
+    <script>
+        function showGame(gameId) {
+            var tabs = document.getElementsByClassName('tab-content');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].style.display = 'none';
+            }
+            document.getElementById(gameId).style.display = 'block';
+        }
+
+        function goHome() {
+            window.location.href = 'index.html';
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            showGame('game1');
+        });
+    </script>
+</body>
+
+</html>
