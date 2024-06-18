@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/header_styles.css"> <!-- Linking external CSS file -->
+    <style>
+        /* Inline styles for specific to this HTML file */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-image: url('image/5033917.jpg');
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 80px);
+            background-color: #f4f4f43c;
+            width: 80%;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .board-section {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.054);
+        }
+
+        .board-left {
+            flex: 1;
+            background-color: rgba(45, 19, 112, 0.684);
+            color: rgb(255, 255, 255);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .board-left h1 {
+            font-size: 36px;
+        }
+
+        .board-area {
+            flex: 2;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .new-button {
+            padding: 8px 16px;
+            background-color: rgb(64, 64, 116);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 850px;
+            /* This might need adjustment based on your layout */
+        }
+
+        .board-area h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: black;
+            text-align: center;
+        }
+
+        .board-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .board-table th,
+        .board-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+            color: black;
+        }
+
+        .board-table th {
+            background-color: #f9f9f9b9;
+        }
+
+        .board-table tbody tr {
+            background-color: #f9f9f9b9;
+        }
+
+        .board-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9b9;
+        }
+
+        .board-table a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .board-table a:hover {
+            text-decoration: underline;
+        }
+
+        .pagination {
+            margin-bottom: 20px;
+        }
+
+        .pagination button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            background-color: rgba(255, 255, 255, 0.855);
+            cursor: pointer;
+            color: black;
+        }
+
+        .pagination button:hover {
+            background-color: rgba(231, 231, 232, 0.004);
+            color: white;
+        }
+
+        .pagination button:active {
+            background-color: rgba(25, 25, 173, 0.598);
+            color: white;
+        }
+
+        .board-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .board-buttons .write-button,
+        .board-buttons .home-button {
+            padding: 10px 20px;
+            border: none;
+            background-color: rgb(64, 64, 116);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            width: 48%;
+        }
+
+        .board-buttons .write-button:hover,
+        .board-buttons .home-button:hover {
+            background-color: rgb(64, 64, 116);
+        }
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: black;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: 60px;
+            background-image: url('image/9.png');
+        }
+    </style>
+    <title>게시판</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <img src="image/GamebitLogo.png" alt="Nintendo Logo" class="logo">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.html">홈</a>
+                        <div class="dropdown"></div>
+                    </li>
+                    <li>
+                        <a href="#">게임</a>
+                        <div class="dropdown">
+                            <a href="win.html">명예의 전당</a>
+                            <a href="#">Subitem 2</a>
+                            <a href="#">랭킹</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="board.html">게시판</a>
+                        <div class="dropdown">
+                            <a href="board.html">게시판</a>
+                            <a href="#">Q&A</a>
+                            <a href="#">공지사항</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">마이페이지</a>
+                        <div class="dropdown">
+                            <a href="#">내 정보 수정</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">관리자 페이지</a>
+                        <div class="dropdown">
+                            <a href="#">대시보드</a>
+                            <a href="#">통계</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <button class="login-button" onclick="location.href='join.html'">Login</button>
+                <div class="hamburger-menu" onclick="toggleMenu()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="main">
+        <section class="board-section">
+            <article class="board-left">
+                <h1>게시판</h1>
+                <div class="wc_message"></div>
+            </article>
+            <article class="board-area">
+                <div class="top-right-button">
+                    <button class="new-button" onclick="location.href='bookmark.html'"> 북마크 </button>
+                </div>
+                <h2></h2>
+                <table class="board-table">
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>글쓴이</th>
+                            <th>등록일</th>
+                            <th>조회수</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>34</td>
+                            <td><a href="detail.html">파일 다운 성공</a></td>
+                            <td>kakao9999</td>
+                            <td>2024-06-05 12:10:45.0</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>33</td>
+                            <td><a href="detail.html">힐</a></td>
+                            <td>kakao9999</td>
+                            <td>2024-06-05 10:19:29.0</td>
+                            <td>9</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                </div>
+                <div class="board-buttons">
+                    <button class="write-button" onclick="location.href='write.html'">글쓰기</button>
+                    <button class="home-button" onclick="location.href='index.html'">홈으로</button>
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+
+</html>
