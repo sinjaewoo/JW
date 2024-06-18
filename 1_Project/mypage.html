@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+
+    <link rel="stylesheet" href="css/header_styles.css">
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body,
+    html {
+        height: 100%;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        font-family: 'Open Sans', sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: url('image/5033917.jpg');
+    }
+
+    .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        background-color: #f4f4f463;
+        width: 80%;
+        height: 80%;
+        margin: auto;
+        border-radius: 10px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .mypage-section {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: rgba(255, 255, 255, 0);
+    }
+
+    .mypage-left {
+        flex: 1;
+        background-color: rgba(212, 15, 196, 0.349);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .mypage-left h1 {
+        font-size: 36px;
+    }
+
+    .mypage-info-area {
+        flex: 2;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mypage-info-area h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+        color: black;
+        text-align: center;
+    }
+
+    .info-form {
+        width: 100%;
+        max-width: 800px;
+    }
+
+    .info-field {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .info-field label {
+        margin-bottom: 5px;
+        font-weight: bold;
+        font-size: 1em;
+    }
+
+    .info-field input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #cccccc77;
+        border-radius: 5px;
+        font-size: 1em;
+        background-color: #f4f4f4;
+        color: black;
+    }
+
+    .info-field input[type="text"]:disabled {
+        background-color: #e9e9e9;
+    }
+
+    .form-buttons {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .form-buttons button {
+        padding: 10px 20px;
+        border: none;
+        background-color: rgba(195, 208, 23, 0.578);
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+        width: 30%;
+    }
+
+    .form-buttons button:hover {
+        background-color: rgba(125, 133, 21, 0.78);
+    }
+    header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: black;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: 60px;
+            background-image: url('image/9.png');
+        }
+
+   
+
+</style>
+
+<body>
+    <header>
+        <div class="header-container">
+            <img src="image/GamebitLogo.png" alt="Nintendo Logo" class="logo">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.html">홈</a>
+                        <div class="dropdown"></div>
+                    </li>
+                    <li>
+                        <a href="#">게임</a>
+                        <div class="dropdown">
+                            <a href="win.html">명예의 전당</a>
+                            <a href="#">Subitem 2</a>
+                            <a href="#">랭킹</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="board.html">게시판</a>
+                        <div class="dropdown">
+                            <a href="board.html">게시판</a>
+                            <a href="#">Q&A</a>
+                            <a href="#">공지사항</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">마이페이지</a>
+                        <div class="dropdown">
+                            <a href="#">내 정보 수정</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">관리자 페이지</a>
+                        <div class="dropdown">
+                            <a href="#">대시보드</a>
+                            <a href="#">통계</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <button class="login-button" onclick="location.href='join.html'">Login</button>
+                <div class="hamburger-menu" onclick="toggleMenu()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <section class="mypage-section">
+            <article class="mypage-left">
+                <h1>마이페이지</h1>
+            </article>
+            <article class="mypage-info-area">
+                <h2></h2>
+                <form class="info-form">
+                    <div class="info-field">
+                        <label for="user-id">ID</label>
+                        <input type="text" id="user-id" name="user-id" value="user123" disabled>
+                    </div>
+                    <div class="info-field">
+                        <label for="user-name">이름</label>
+                        <input type="text" id="user-name" name="user-name" value="이름" disabled>
+                    </div>
+                    <div class="info-field">
+                        <label for="user-nickname">닉네임</label>
+                        <input type="text" id="user-nickname" name="user-nickname" value="name" disabled>
+                    </div>
+                    <div class="info-field">
+                        <label for="user-phone">전화번호</label>
+                        <input type="text" id="user-phone" name="user-phone" value="010-1234-5678" disabled>
+                    </div>
+                    <div class="info-field">
+                        <label for="user-email">이메일</label>
+                        <input type="text" id="user-email" name="user-email" value="abcd@gmail.com" disabled>
+                    </div>
+                    <div class="info-field">
+                        <label for="user-join-date">가입 날짜</label>
+                        <input type="text" id="user-join-date" name="user-join-date" value="2024-06-15" disabled>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" onclick="location.href='edit_profile.html'">수정</button>
+                    </div>
+                </form>
+            </article>
+        </section>
+    </main>
+</body>
+
+</html>
