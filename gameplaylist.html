@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/header_styles.css">
+    <title>Gamebit</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-image: url('image/5033917.jpg');
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: black;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: 60px;
+            background-image: url('image/9.png');
+        }
+
+        .content {
+            flex: 1;
+            padding: 80px 20px 20px; /* 헤더 아래 여유 공간 추가 */
+        }
+
+        .game-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .game-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .game-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        .game-info {
+            flex: 1;
+        }
+
+        .game-info h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .game-info p {
+            margin: 5px 0;
+        }
+
+        .game-info .play-count {
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .footer-icons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-icons a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            margin: 0 15px;
+        }
+
+        .footer-icons a img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .footer-icons a:hover {
+            color: #f1f1f1;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .socials a {
+            color: #FF4081;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <img src="image/kakao.png" class="logo">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.html">홈</a>
+                        <div class="dropdown">
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">게임</a>
+                        <div class="dropdown">
+                            <a href="win.html">명예의 전당</a> <!-- 명예의 전당 페이지로 이동 -->
+                            <a href="#">Subitem 2</a>
+                            <a href="#">랭킹</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="board.html">게시판</a> <!-- 게시판 페이지로 이동 -->
+                        <div class="dropdown">
+                            <a href="board.html">게시판</a> <!-- 게시판 페이지로 이동 -->
+                            <a href="#">Q&A</a>
+                            <a href="#">공지사항</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">마이페이지</a>
+                        <div class="dropdown">
+                            <a href="#">내 정보 수정</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">관리자 페이지</a>
+                        <div class="dropdown">
+                            <a href="#">대시보드</a>
+                            <a href="#">통계</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <button class="login-button" onclick="location.href='join.html'">Login</button>
+                <div class="hamburger-menu" onclick="toggleMenu()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="content">
+        <div class="game-list">
+            <div class="game-item">
+                <img src="image/poke2.png" alt="Game 1">
+                <div class="game-info">
+                    <h2>게임 1</h2>
+                    <p>이 게임은 매우 인기 있는 게임입니다.</p>
+                    <p class="play-count">플레이 횟수: 1,000,000</p>
+                </div>
+            </div>
+            <div class="game-item">
+                <img src="image/skull2.png" alt="Game 2">
+                <div class="game-info">
+                    <h2>게임 2</h2>
+                    <p>이 게임은 매우 인기 있는 게임입니다.</p>
+                    <p class="play-count">플레이 횟수: 900,000</p>
+                </div>
+            </div>
+            <div class="game-item">
+                <img src="image/teraria.jpg" alt="Game 3">
+                <div class="game-info">
+                    <h2>게임 3</h2>
+                    <p>이 게임은 매우 인기 있는 게임입니다.</p>
+                    <p class="play-count">플레이 횟수: 800,000</p>
+                </div>
+            </div>
+            <div class="game-item">
+                <img src="image/dung.png" alt="Game 4">
+                <div class="game-info">
+                    <h2>게임 4</h2>
+                    <p>이 게임은 매우 인기 있는 게임입니다.</p>
+                    <p class="play-count">플레이 횟수: 700,000</p>
+                </div>
+            </div>
+            <div class="game-item">
+                <img src="image/ded.png" alt="Game 5">
+                <div class="game-info">
+                    <h2>게임 5</h2>
+                    <p>이 게임은 매우 인기 있는 게임입니다.</p>
+                    <p class="play-count">플레이 횟수: 600,000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-icons">
+                <a href="https://www.facebook.com"><img src="image/face.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com"><img src="image/insta.png" alt="Instagram"></a>
+                <a href="https://www.youtube.com"><img src="image/youtube.png" alt="YouTube"></a>
+            </div>
+            <div class="footer-links">
+                <a href="#">Info</a>
+                <a href="#">Support</a>
+                <a href="#">Marketing</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <p>&copy; 2024 Team Project</p>
+        </div>
+    </footer>
+</body>
+
+<script>
+    function toggleMenu() {
+        const nav = document.querySelector('nav ul');
+        nav.classList.toggle('show');
+    }
+</script>
+
+</html>

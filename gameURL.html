@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/header_styles.css">
+    <title>북마크 항목</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-image: url('image/5033917.jpg');
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f916;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: black;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: 60px;
+            background-image: url('image/9.png');
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+            height: 80%;
+            margin: 80px auto;
+            /* 헤더 고정으로 인한 상단 마진 추가 */
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.104);
+        }
+
+        .board-section,
+        .edit-post-section {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .board-left {
+            flex: 1;
+            background-color: rgba(159, 89, 20, 0.684);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .board-left h1 {
+            font-size: 36px;
+        }
+
+        .edit-post-area {
+            flex: 2;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .edit-post-area h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: black;
+            text-align: center;
+        }
+
+        .bookmark-list {
+            width: 100%;
+            max-width: 800px;
+            margin-top: 0;
+        }
+
+        .post-form {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .form-field {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-field label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .form-field input[type="text"],
+        .form-field textarea,
+        .form-field input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .form-field input[type="file"] {
+            border: none;
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .form-buttons button {
+            padding: 10px 20px;
+            border: none;
+            background-color: blue;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            width: 48%;
+        }
+
+        .form-buttons button:hover {
+            background-color: #0000cc;
+        }
+
+        .book_marks {
+            display: none;
+        }
+
+        .bookmark-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .bookmark-item {
+            background-color: rgba(255, 255, 255, 0.943);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
+            display: flex;
+            align-items: center;
+        }
+
+        .bookmark-icon {
+            color: #ff6347;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .bookmark-content {
+            flex-grow: 1;
+        }
+
+        .bookmark-title {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .bookmark-description {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .bookmark-link {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .bookmark-link:hover {
+            text-decoration: underline;
+        }
+
+        .bookmark-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .bookmark-actions button {
+            background: none;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .bookmark-actions .btn-edit:hover {
+            color: rgb(249, 63, 76);
+        }
+
+        .bookmark-actions .btn-delete:hover {
+            color: #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <img src="image/GamebitLogo.png" alt="Nintendo Logo" class="logo">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.html">홈</a>
+                        <div class="dropdown"></div>
+                    </li>
+                    <li>
+                        <a href="#">게임</a>
+                        <div class="dropdown">
+                            <a href="win.html">명예의 전당</a>
+                            <a href="#">Subitem 2</a>
+                            <a href="#">랭킹</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="board.html">게시판</a>
+                        <div class="dropdown">
+                            <a href="board.html">게시판</a>
+                            <a href="#">Q&A</a>
+                            <a href="#">공지사항</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">마이페이지</a>
+                        <div class="dropdown">
+                            <a href="#">내 정보 수정</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">관리자 페이지</a>
+                        <div class="dropdown">
+                            <a href="#">대시보드</a>
+                            <a href="#">통계</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <button class="login-button" onclick="location.href='join.html'">Login</button>
+                <div class="hamburger-menu" onclick="toggleMenu()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="edit-post-section">
+            <article class="board-left">
+                <h1>게임 즐겨찾기 항목</h1>
+                <div class="book_marks"></div>
+            </article>
+            <article class="edit-post-area">
+                <h2>북마크 리스트</h2>
+                <ul class="bookmark-list">
+                    <!-- 북마크 항목이 여기에 렌더링됩니다 -->
+                </ul>
+            </article>
+        </section>
+    </main>
+    <script>
+        // 서버에서 전달된 북마크 데이터 (예시)
+        const bookmarks = [
+            { id: 1, title: '게임 제목 1', url: 'https://example.com/1', description: '게임 1의 설명입니다.' },
+            { id: 2, title: '게임 제목 2', url: 'https://example.com/2', description: '게임 2의 설명입니다.' },
+            { id: 3, title: '게임 제목 3', url: 'https://example.com/3', description: '게임 3의 설명입니다.' },
+            { id: 4, title: '게임 제목 4', url: 'https://example.com/4', description: '게임 4의 설명입니다.' },
+            { id: 5, title: '게임 제목 5', url: 'https://example.com/5', description: '게임 5의 설명입니다.' }
+        ];
+
+        // 북마크 항목 렌더링 함수
+        function renderBookmarks(bookmarks) {
+            const bookmarkList = document.querySelector('.bookmark-list');
+
+            bookmarks.forEach(bookmark => {
+                const bookmarkItem = document.createElement('li');
+                bookmarkItem.classList.add('bookmark-item');
+                bookmarkItem.innerHTML = `
+                <span class="bookmark-icon">&#128278;</span>
+                <div class="bookmark-content">
+                    <h3 class="bookmark-title">${bookmark.title}</h3>
+                    <p class="bookmark-description">${bookmark.description}</p>
+                    <a href="${bookmark.url}" class="bookmark-link" target="_blank">${bookmark.url}</a>
+                </div>
+            `;
+                bookmarkList.appendChild(bookmarkItem);
+            });
+        }
+
+        // 북마크 항목 렌더링 호출
+        renderBookmarks(bookmarks);
+    </script>
+</body>
+
+</html>
