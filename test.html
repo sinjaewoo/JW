@@ -1,258 +1,330 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gamebit</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.80.1/phaser.min.js"></script>
-    <script src="js/Exam01.js"></script>
-    <script src="js/Exam02.js"></script>
-    <script src="js/GameOver.js"></script>
-    <Style>
-    body {
-        margin: 0;
-        font-family: 'Roboto', sans-serif;
-        background-image: url('image/5033917.jpg');
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
+    <link rel="stylesheet" href="css/header_styles.css">
+    <title>게시물 상세보기</title>
+    <style>
 
-    header {
-        position: relative;
-        z-index: 1000;
-    }
 
-    .header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: black;
-        padding: 10px 20px;
-        position: relative;
-        z-index: 1000;
-    }
+        body,
+        html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
 
-    .logo {
-        height: 40px;
-    }
-
-    nav ul {
-        list-style: none;
-        display: flex;
-        margin: 0;
-        padding: 0;
-    }
-
-    nav ul li {
-        position: relative;
-        margin-right: 20px;
-    }
-
-    nav ul li a {
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        padding: 10px 15px;
-        display: block;
-        /* Ensures the a tag takes the full width of the li */
-    }
-
-    nav ul li:hover>.dropdown {
-        visibility: visible;
-        opacity: 1;
-        transform: translateY(0);
-        transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    .dropdown {
-        visibility: hidden;
-        opacity: 0;
-        position: absolute;
-        background-color: rgba(19, 25, 26, 0.216);
-        box-shadow: 0 8px 16px rgba(205, 199, 199, 0.2);
-        z-index: 1500;
-        min-width: 100px;
-        transform: translateY(-20px);
-        transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s 0.5s;
-    }
-
-    .dropdown a {
-        display: block;
-        padding: 10px 20px;
-        color: rgb(207, 211, 211);
-        text-decoration: none;
-        white-space: nowrap;
-    }
-
-    .dropdown a:hover {
-        background-color:rgba(8, 15, 84, 0.217);
-    }
-
-    .header-buttons {
-        display: flex;
-        align-items: center;
-    }
-
-    .login-button {
-        padding: 5px 10px;
-        background-color: white;
-        border: none;
-        border-radius: 5px;
-        color: rgb(249, 63, 76);
-        cursor: pointer;
-        font-weight: bold;
-    }
-
-    .hamburger-menu {
-        display: none;
-        flex-direction: column;
-        cursor: pointer;
-        padding: 10px;
-    }
-
-    .hamburger-menu div {
-        width: 25px;
-        height: 3px;
-        background-color: white;
-        margin: 4px 0;
-    }
-
-    @media (max-width: 768px) {
-        .hamburger-menu {
+        body {
+            font-family: "GalmuriMono9", monospace;
+            margin: 0;
+            padding: 0;
             display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('image/5033917.jpg');
         }
 
-        .header-buttons input {
-            display: none;
-        }
-
-        .header-buttons {
-            justify-content: flex-end;
-        }
-
-        nav ul {
-            display: none;
-            flex-direction: column;
+        header {
+            position: fixed;
             width: 100%;
-            background-color: black;
-            position: absolute;
-            top: 60px;
+            top: 0;
             left: 0;
+            z-index: 1000;
+            background-color: black;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: 60px;
+            background-image: url('image/9.png');
         }
 
-        nav ul.show {
+        .main {
             display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            background-color: #f4f4f462;
+            width: 80%;
+            height: 80%;
+            margin: 80px auto;
+            /* 헤더 고정으로 인한 상단 마진 추가 */
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
         }
 
-        nav ul li {
-            margin: 10px 0;
+        .board-section {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.412);
+        }
+
+        .board-left {
+            flex: 1;
+            background-color: rgba(4, 134, 39, 0.454);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .board-left h1 {
+            font-size: 36px;
+        }
+
+        .board-area {
+            flex: 2;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.24);
+        }
+
+        .board-area h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: black;
             text-align: center;
         }
-    }
 
-    .content {
-        flex: 1;
-    }
-
-    footer {
-        background-color: black;
-        color: white;
-        text-align: center;
-        padding: 1rem;
-        margin-top: 2rem;
-    }
-    
-    .footer-content {
-        margin: 0 auto;
-        max-width: 1200px;
-    }
-    
-    .footer-icons {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 1rem;
-    }
-    
-    .footer-icons a {
-        color: white;
-        text-decoration: none;
-        font-size: 24px;
-        margin: 0 15px;
-    }
-    
-    .footer-icons a img {
-        width: 32px;
-        height: 32px;
-    }
-    
-    .footer-icons a:hover {
-        color: #f1f1f1;
-    }
-    
-    .footer-links {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-bottom: 1rem;
-    }
-    
-    .footer-links a {
-        color: white;
-        text-decoration: none;
-        margin: 0 10px;
-    }
-    
-    .footer-links a:hover {
-        text-decoration: underline;
-    }
-
-    .socials a {
-        color: #FF4081;
-        text-decoration: none;
-        margin: 0 10px;
-    }
-
-        #gamebox {
-            width: 500px;
-            height: 500px;
-            border: 1px solid black;
-            margin-top: 50px;
+        .board-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
         }
-    </Style>
+
+        .board-table th,
+        .board-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+            color: black;
+        }
+
+        .board-table th {
+            background-color: #f4f4f4;
+        }
+
+        .board-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .board-table a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .board-table a:hover {
+            text-decoration: underline;
+        }
+
+        .pagination {
+            margin-bottom: 20px;
+        }
+
+        .pagination button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            background-color: white;
+            cursor: pointer;
+            color: black;
+        }
+
+        .pagination button:hover {
+            background-color: rgba(4, 134, 39, 0.47);
+            color: white;
+        }
+
+        .pagination button:active {
+            background-color: rgba(4, 134, 39, 0.47);
+            color: white;
+        }
+
+        .write-button {
+            padding: 10px 20px;
+            background-color: rgba(4, 134, 39, 0.47);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .write-button:hover {
+            background-color: rgba(4, 134, 39, 0.47);
+        }
+
+        .post-details {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        .post-details p {
+            margin-bottom: 10px;
+            font-size: 1em;
+            color: black;
+        }
+
+        .post-details strong {
+            font-weight: bold;
+        }
+
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        .post-actions button {
+            padding: 10px 20px;
+            border: none;
+            background-color: rgba(4, 134, 39, 0.47);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            width: 30%;
+        }
+
+        .post-actions button:hover {
+            background-color: rgba(13, 230, 71, 0.47);
+        }
+
+        .post-attachments {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        .post-attachments h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .post-attachments ul {
+            list-style: none;
+        }
+
+        .post-attachments ul li {
+            margin-bottom: 5px;
+        }
+
+        .post-attachments ul li a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+        }
+
+        .post-attachments ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .post-comments {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .post-comments h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .post-comments textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .post-comments button {
+            padding: 10px 20px;
+            border: none;
+            background-color: rgba(4, 134, 39, 0.47);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .post-comments button:hover {
+            background-color: rgba(13, 230, 71, 0.47);
+        }
+
+        .comment-box {
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .comment-box .comment {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .comment-box .comment .col1 {
+            flex: 1;
+            color: black;
+        }
+
+        .comment-box .comment .col3 {
+            flex: 4;
+            color: black;
+        }
+
+        .comment-box .comment .col3 .comment-text {
+            display: inline-block;
+        }
+
+        .comment-box .comment .reply-textarea {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .comment-box .comment .reply-comment-box {
+            display: none;
+            margin-left: 20px;
+            padding-left: 20px;
+            border-left: 1px solid #ddd;
+        }
+
+        .comment-box .comment a {
+            margin-left: 10px;
+            cursor: pointer;
+            color: blue;
+        }
+    </style>
 </head>
 
 <body>
     <header>
         <div class="header-container">
-            <img src="image/kakao.png" alt="Nintendo Logo" class="logo">
+            <img src="image/GamebitLogo.png" alt="Gamebit Logo" class="logo">
             <nav>
                 <ul>
                     <li>
                         <a href="index.html">홈</a>
-                        <div class="dropdown">
-                        </div>
                     </li>
                     <li>
-                        <a href="#">게임</a>
-                        <div class="dropdown">
-                            <a href="win.html">명예의 전당</a> <!-- 명예의 전당 페이지로 이동 -->
-                            <a href="#">Subitem 2</a>
-                            <a href="#">랭킹</a>
-                        </div>
+                        <a href="notice.html">공지사항</a>
                     </li>
                     <li>
-                        <a href="board.html">게시판</a> <!-- 게시판 페이지로 이동 -->
+                        <a href="#">내 정보</a>
                         <div class="dropdown">
-                            <a href="board.html">게시판</a> <!-- 게시판 페이지로 이동 -->
-                            <a href="#">Q&A</a>
-                            <a href="#">공지사항</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#">마이페이지</a>
-                        <div class="dropdown">
+                            <a href="#">내 정보 보기</a>
                             <a href="#">내 정보 수정</a>
                         </div>
                     </li>
@@ -265,67 +337,115 @@
                     </li>
                 </ul>
             </nav>
- 
-                <div class="header-buttons">
-                    <button class="login-button" onclick="location.href='join.html'">Login</button>
-                    <div class="hamburger-menu" onclick="toggleMenu()">
-                        <div></div>
-                        <div></div>
-                        <div></div>
+            <div class="header-buttons">
+                <button class="login-button" onclick="location.href='join.html'">Login</button>
+                <div class="hamburger-menu" onclick="toggleMenu()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <section class="board-section">
+            <article class="board-left">
+                <h1>게시물 상세 보기</h1>
+                <div class="wc_message"></div>
+            </article>
+            <article class="board-area">
+                <h2></h2>
+                <div class="post-details">
+                    <p><strong>제목</strong><br>파일 다운 성공</p>
+                    <p><strong>글쓴이</strong><br>kakao9999</p>
+                    <p><strong>내용</strong><br>크크</p>
+                    <p><strong>조회수</strong><br>7</p>
+                    <p><strong>작성일</strong><br>2024-06-05 12:10:45</p>
+                </div>
+                <div class="post-actions">
+                    <button type="button" onclick="location.href='board.html'">목록</button>
+                    <button type="button">수정</button>
+                    <button type="button">삭제</button>
+                </div>
+                <div class="post-attachments">
+                    <h3>첨부 파일</h3>
+                    <ul>
+                        <li><a href="#">jstl-1.2.jar</a></li>
+                    </ul>
+                </div>
+                <div class="post-comments">
+                    <h3>댓글</h3>
+                    <textarea id="comment" placeholder="댓글 입력"></textarea>
+                    <button type="button" onclick="addComment()">등록</button>
+                </div>
+
+                <!-- 댓글 -->
+                <div id="comment-box" class="comment-box">
+                    <div class="comment">
+                        <div class="col1">작성자아이디</div>
+                        <div class="col3">
+                            <span class="comment-text">댓글 내용</span>
+                            <textarea class="reply-textarea" placeholder="답글 입력"></textarea>
+                            <div class="reply-comment-box"></div>
+                        </div>
+                        <div>작성일</div>
+                        <a class="reply-toggle">답글달기</a>
+                        <a class="view-replies">답글 보기</a>
+                    </div>
+                    <div class="comment">
+                        <div class="col1">작성자아이디</div>
+                        <div class="col3">
+                            <span class="comment-text">댓글 내용</span>
+                            <textarea class="reply-textarea" placeholder="답글 입력"></textarea>
+                            <div class="reply-comment-box"></div>
+                        </div>
+                        <div>작성일</div>
+                        <a class="reply-toggle">답글달기</a>
                     </div>
                 </div>
-        </div>
-     
-    </header>
+            </article>
+        </section>
+    </main>
 
-    <!--<div class="content">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const commentBox = document.getElementById('comment-box');
+            
+            commentBox.addEventListener('click', (e) => {
+                if (e.target.classList.contains('reply-toggle')) {
+                    const replyTextarea = e.target.closest('.comment').querySelector('.reply-textarea');
+                    replyTextarea.style.display = replyTextarea.style.display === 'none' ? 'block' : 'none';
+                }
+                
+                if (e.target.classList.contains('view-replies')) {
+                    const replyCommentBox = e.target.closest('.comment').querySelector('.reply-comment-box');
+                    replyCommentBox.style.display = replyCommentBox.style.display === 'none' ? 'block' : 'none';
+                }
+            });
+        });
 
-         <div id="gamebox"></div> 
-        <div id="timer"></div>
-    </div>-->
+        function addComment() {
+            const commentBox = document.getElementById('comment-box');
+            const commentTextarea = document.getElementById('comment');
+            const newComment = document.createElement('div');
+            newComment.classList.add('comment');
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-icons">
-                <a href="https://www.facebook.com"><img src="image/face.png" alt="Facebook"></a>
-                <a href="https://www.instagram.com"><img src="image/insta.png" alt="Instagram"></a>
-                <a href="https://www.youtube.com"><img src="image/youtube.png" alt="YouTube"></a>
-            </div>
-            <div class="footer-links">
-                <a href="#">Info</a>
-                <a href="#">Support</a>
-                <a href="#">Marketing</a>
-                <a href="#">Terms of Use</a>
-                <a href="#">Privacy Policy</a>
-            </div>
-            <p>&copy; 2024 Team Project</p>
-        </div>
-    </footer>
+            newComment.innerHTML = `
+                <div class="col1">작성자아이디</div>
+                <div class="col3">
+                    <span class="comment-text">${commentTextarea.value}</span>
+                    <textarea class="reply-textarea" placeholder="답글 입력" style="display: none;"></textarea>
+                    <div class="reply-comment-box" style="display: none;"></div>
+                </div>
+                <div>작성일</div>
+                <a class="reply-toggle">답글달기</a>
+                <a class="view-replies">답글 보기</a>
+            `;
 
+            commentBox.appendChild(newComment);
+            commentTextarea.value = '';
+        }
+    </script>
 </body>
-
-<!-- <script>
-    function toggleMenu() {
-        const nav = document.querySelector('nav ul');
-        nav.classList.toggle('show');
-    }
-</script>
-
-<script>
-    let config = {
-        type: Phaser.AUTO,
-        parent: "gamebox",
-        width: 500,
-        height: 500,
-        physics: {
-            default: "arcade",
-            arcade: {
-                debug: true
-            }
-        },
-        scene: [Exam02, GameOver]
-    };
-    let game = new Phaser.Game(config);
-</script> -->
 
 </html>
